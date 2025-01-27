@@ -8,6 +8,7 @@ with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
 app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def home():
@@ -25,4 +26,4 @@ def predict():
     return render_template('index.html', prediction_text='Prediction: {}'.format(output))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False,port=8000)
